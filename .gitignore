@@ -1,0 +1,22 @@
+# OpenTofu / Terraform working directory
+.terraform/
+
+# Sensitive variable overrides (optional—if used)
+*.tfvars
+*.tfvars.json
+
+# Terraform plan output
+*.tfplan
+
+# Crash logs
+crash.log
+
+# Local override files (e.g., dev/test-specific)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# macOS specific
+.DS_Store
+

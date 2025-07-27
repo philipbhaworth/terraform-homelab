@@ -44,6 +44,9 @@ module "docker_nodes" {
   agent_enabled = var.agent_enabled
   vm_autostart  = var.vm_autostart
 
+  # Machine type
+  machine_type = var.machine_type
+
   # Tags
   tags = var.tags
 }

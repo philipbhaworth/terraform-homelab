@@ -112,6 +112,12 @@ variable "tags" {
   default     = "docker,terraform"
 }
 
+variable "machine_type" {
+  description = "Machine type (q35 for modern, i440fx for legacy compatibility)"
+  type        = string
+  default     = "q35"
+}
+
 # API Configuration
 variable "api_url" {
   description = "URL to Proxmox API"

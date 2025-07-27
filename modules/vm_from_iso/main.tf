@@ -15,6 +15,7 @@ resource "proxmox_virtual_environment_vm" "vm_from_iso" {
   description = var.description != "" ? var.description : "Managed by Terraform - Created from ISO"
 
   stop_on_destroy = true
+  machine         = var.machine_type
 
   cdrom {
     enabled = true

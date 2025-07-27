@@ -115,3 +115,9 @@ variable "tags" {
   type        = string
   default     = ""
 }
+
+variable "machine_type" {
+  description = "Machine type (q35 for modern, i440fx for legacy compatibility)"
+  type        = string
+  default     = "q35"
+}

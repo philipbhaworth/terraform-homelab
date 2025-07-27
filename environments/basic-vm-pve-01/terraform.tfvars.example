@@ -29,6 +29,9 @@ storage = "dpool01"
 agent_enabled = true
 vm_autostart  = false
 
+# Machine Type (q35 for modern systems, i440fx for legacy compatibility)
+machine_type = "q35"
+
 # Tags for organization
 tags = "basic,terraform"
 

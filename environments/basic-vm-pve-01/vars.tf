@@ -37,7 +37,7 @@ variable "description" {
 variable "iso_file" {
   description = "ISO file to boot from"
   type        = string
-  default     = "local:iso/ubuntu-24-04-2-autoinstall-phil-01.iso"
+  default     = "local:iso/ubuntu-24-04-2-autoinstall-minimal.iso"
 }
 
 variable "cpu_cores" {

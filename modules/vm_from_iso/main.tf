@@ -38,7 +38,7 @@ resource "proxmox_virtual_environment_vm" "vm_from_iso" {
     type    = "virtio"
   }
 
-  boot_order = ["ide0"]
+  boot_order = ["scsi0", "ide0"] # Boot from disk first, then CD-ROM
   on_boot    = true
 
   network_device {

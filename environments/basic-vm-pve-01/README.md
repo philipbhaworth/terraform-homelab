@@ -74,7 +74,7 @@ terraform destroy
 After `terraform apply` completes:
 
 1. **Open Proxmox Web Interface**
-   - Go to `https://192.168.50.10:8006`
+   - Go to `https://your-pve-ip:8006`
    - Navigate to your VM(s)
 
 2. **Complete OS Installation**

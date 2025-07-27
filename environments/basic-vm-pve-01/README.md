@@ -43,7 +43,7 @@ Deploy VMs to pve-01 using ISO-based installation. This is your template for any
    iso_file = "local:iso/ubuntu-24-04-2-autoinstall-phil-01.iso"
 
    # API access (fill in your values)
-   api_url      = "https://192.168.50.10:8006"
+   api_url      = "https://your-pve-ip:8006"
    token_id     = "your-token-id@pve!your-token-name"
    token_secret = "your-secret-token"
    ```
@@ -114,7 +114,7 @@ additional_disk_size = 100  # Adds 100GB second disk
 - Verify VM ID doesn't conflict with existing VMs
 
 ### API Issues
-- Verify API URL: `https://192.168.50.10:8006`
+- Verify API URL: `https://your-pve-ip:8006`
 - Check token permissions in Proxmox
 - Test token with: `pvesh get /nodes`
 

@@ -1,0 +1,38 @@
+# Copy this file to terraform.tfvars and fill in your actual values
+# cp terraform.tfvars.example terraform.tfvars
+
+# VM Configuration
+enabled        = true
+vm_count       = 1
+vm_name_prefix = "myvm"
+vmid_start     = 400
+description    = "Basic VM created by Terraform"
+
+# ISO Configuration (must be uploaded to Proxmox first)
+iso_file = "local:iso/ubuntu-24-04-2-autoinstall.iso"
+
+# Hardware Configuration
+cpu_cores = 2
+cpu_type  = "host"
+memory    = 4096
+disk_size = 40
+disk_ssd  = true
+
+# Network Configuration
+network_bridge  = "vmbr0"
+enable_firewall = true
+
+# Storage Configuration (pve-01 uses dpool01)
+storage = "dpool01"
+
+# Agent and Startup
+agent_enabled = true
+vm_autostart  = false
+
+# Tags for organization
+tags = "basic,terraform"
+
+# API Configuration - FILL IN YOUR VALUES
+api_url      = "https://your-pve-ip:8006" # No /api2/json needed with BPG provider
+token_id     = "your-token-id@pve!your-token-name"
+token_secret = "your-secret-token"

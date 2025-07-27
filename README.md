@@ -1,94 +1,57 @@
-# Terraform Homelab
+# Terraform Homelab Infrastructure
 
-This repo is part of my ongoing effort to learn Terraform and improve my infrastructure-as-code practices in my homelab. The goal is to build clean, repeatable, and scalable infrastructure while exploring best practices along the way.
+This repository contains Terraform configurations for managing Proxmox VE virtual machines in a homelab environment.
 
-## Project Structure
+## Directory Structure
 
 ```
-repos/terraform/
-├── proxmox-docker-nodes/     # Current project - deploy Docker nodes
-│   ├── main.tf
-│   ├── vars.tf
-│   ├── terraform.tfvars
-├── proxmox-k8s-cluster/      # Future Kubernetes cluster
-│   ├── main.tf
-│   ├── vars.tf
-│   └── terraform.tfvars
-├── proxmox-monitoring/       # Monitoring infrastructure (Prometheus, Grafana, etc.)
-│   ├── main.tf
-│   ├── vars.tf
-│   └── terraform.tfvars
-└── modules/                  # Shared and reusable modules
-    ├── proxmox-vm/
-    └── common-configs/
+terraform-homelab/
+├── README.md                      # This file
+├── .gitignore                     # Git ignore patterns
+├── modules/
+│   ├── README.md                  # Module documentation
+│   └── vm_from_iso/               # Reusable VM creation module
+│       ├── README.md              # Module-specific documentation
+│       ├── main.tf                # VM resource definitions
+│       ├── variables.tf           # Input parameters
+│       └── outputs.tf             # Return values
+└── environments/
+    ├── README.md                  # Environment documentation
+    ├── basic-vm/                  # Standard VM deployment
+    │   ├── README.md              # Deployment instructions
+    │   ├── main.tf                # Environment configuration
+    │   ├── variables.tf           # Environment variables
+    │   ├── terraform.tfvars.example # Example configuration
+    │   └── terraform.tfvars       # Your actual values (ignored by git)
+    └── future-environments/       # Additional deployments
 ```
 
-## Getting Started (Runbook)
+## Getting Started
 
-From inside a project directory (e.g. `proxmox-docker-nodes/`):
+### Prerequisites
+- Terraform >= 1.0.0
+- Proxmox VE cluster
+- API token with appropriate permissions
+- ISO files uploaded to Proxmox storage
 
-### 1. Initialize Terraform
+### Quick Start
+1. Clone this repository
+2. Navigate to an environment: `cd environments/basic-vm/`
+3. Copy example config: `cp terraform.tfvars.example terraform.tfvars`
+4. Edit `terraform.tfvars` with your values
+5. Initialize: `terraform init`
+6. Plan: `terraform plan`
+7. Apply: `terraform apply`
 
-```bash
-terraform init
-```
+## Environments
 
-_Prepares the working directory by downloading providers and initializing the backend._
+Each environment is a specific deployment using the shared modules:
+
+- **basic-vm/** - Standard VM deployment template
+- **Future environments** - Add more as needed
+
+## Support
+
+For issues or questions, check the environment-specific README files or module documentation.
 
 ---
-
-### 2. Preview Changes
-
-```bash
-terraform plan -out=tfplan
-```
-
-_Shows what Terraform will do, and saves the plan to a file._
-
----
-
-### 3. Apply the Plan
-
-```bash
-terraform apply tfplan
-```
-
-_Applies the previously saved plan to create/update infrastructure._
-
----
-
-### 4. Destroy Resources (when cleaning up)
-
-```bash
-terraform destroy
-```
-
-_Destroys all managed infrastructure._
-
----
-
-### 5. Clean Up
-
-```bash
-rm -f tfplan
-```
-
-_Removes the saved plan file after apply._
-
----
-
-## Notes
-
-* Variable values go in `terraform.tfvars`
-* `vars.tf` defines input variables
-* `main.tf` holds the core configuration
-
----
-
-## Optional Tools
-
-While not required yet, I may later integrate:
-
-* **Pre-commit hooks**
-* **YAML/Terraform linting**
-* **State file backend (e.g. S3, Consul)** once workflows are more complex
